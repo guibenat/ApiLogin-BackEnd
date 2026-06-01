@@ -1,4 +1,4 @@
-package com.example.login_auth_api.contorllers;
+package com.example.login_auth_api.controllers;
 
 import com.example.login_auth_api.domain.user.User;
 import com.example.login_auth_api.dto.LoginRequestDTO;
