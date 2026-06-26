@@ -1,37 +1,50 @@
-# ApiString 🔐
+# ApiLogin-BackEnd
 
-![Status do Projeto](https://img.shields.io/badge/status-em_desenvolvimento-yellow)
-![Java](https://img.shields.io/badge/Java-17%2B-orange?logo=openjdk)
-![Spring Boot](https://img.shields.io/badge/Spring_Boot-3.x-green?logo=spring)
-![Spring Security](https://img.shields.io/badge/Spring_Security-Protected-6DB33F?logo=springsecurity)
+![Status](https://img.shields.io/badge/Status-Em%20Desenvolvimento-blue)
+![Autenticação](https://img.shields.io/badge/Auth-JWT-orange)
+![Licença](https://img.shields.io/badge/Licen%C3%A7a-MIT-green)
 
-Uma API REST de autenticação e controle de acesso robusta, desenvolvida em **Java** com o ecossistema **Spring**. O projeto gerencia o fluxo de login, criação de usuários e proteção de rotas de forma segura.
+Esta é uma API de Autenticação completa e escalável projetada para servir como uma solução robusta de backend para o gerenciamento de usuários, autenticação segura e controle de acesso baseado em tokens **JWT (JSON Web Tokens)**.
 
----
-
-## 🛠️ Tecnologias e Dependências Utilizadas
-
-O projeto foi estruturado utilizando as seguintes tecnologias do ecossistema Spring:
-
-* **Java 17+** (ou a versão que você estiver usando)
-* **Spring Boot:** Framework base para a construção da API.
-* **Spring Security:** Responsável pela autenticação, autorização e proteção contra vulnerabilidades.
-* **Spring Data JPA:** Abstração de persistência de dados e mapeamento objeto-relacional (ORM).
-* **Banco de Dados Local:** Configurado para persistência local em ambiente de desenvolvimento (ex: H2, PostgreSQL ou MySQL local).
+O projeto foi construído seguindo os padrões ideais de arquitetura de software, garantindo criptografia segura de senhas, validação estruturada de dados e prevenção contra as principais vulnerabilidades.
 
 ---
 
-## 🚀 Como Executar o Projeto Localmente
+## 🚀 Funcionalidades Principais
 
-### Pré-requisitos
-Antes de começar, certifique-se de ter instalado em sua máquina:
-* **JDK 17** ou superior.
-* **Maven** (gerenciador de dependências).
-* Uma IDE de sua preferência (IntelliJ IDEA, Eclipse, VS Code).
-* O serviço do seu Banco de Dados ativo localmente (caso não esteja usando o H2 em memória).
+- **Autenticação Segura:** Login estruturado através de tokens JWT com expiração configurável.
+- **Gerenciamento de Usuários:** Cadastro de novas credenciais, atualização de dados de perfil e exclusão.
+- **Segurança de Dados:** Hashing robusto e seguro para o armazenamento de senhas no banco de dados.
+- **Middlewares de Validação:** Filtros integrados para garantir dados limpos, consistentes e sanitizados.
+- **Arquitetura Escalável:** Estrutura limpa e desacoplada, facilitando a manutenção e a inserção de novas rotas.
 
-### Passo a Passo
+---
 
-1. **Clone o repositório:**
+## 🛠️ Tecnologias e Ferramentas Típicas
+
+- **Ambiente Back-End:** Node.js / Express ou compatível (C#, Java, Python).
+- **Segurança:** `jsonwebtoken` (JWT), criptografia baseada em hashes seguros.
+- **Persistência de Dados:** Banco de dados relacional ou não-relacional abstrato via ORM/ODM.
+
+---
+
+## 📦 Configuração e Instalação
+
+### 1. Clonar o Repositório
 ```bash
-   git clone [https://github.com/guibenat/ApiString.git](https://github.com/guibenat/ApiString.git)
+git clone [https://github.com/guibenat/ApiLogin-BackEnd.git](https://github.com/guibenat/ApiLogin-BackEnd.git)
+cd ApiLogin-BackEnd
+2. Configurar Variáveis de AmbienteCrie um arquivo .env na raiz do projeto e preencha-o com suas configurações (utilize o padrão abaixo como referência):Snippet de códigoPORT=5000
+DATABASE_URL="sua_string_de_conexao_do_banco"
+JWT_SECRET="seu_segredo_super_protegido_e_longo"
+JWT_EXPIRES_IN="1d"
+3. Instalação e InicializaçãoBash# Instalar as dependências do projeto
+npm install
+
+# Executar as migrações/scripts de banco de dados (se aplicável)
+npm run db:migrate
+
+# Iniciar o servidor em modo de desenvolvimento
+npm run dev
+🔌 Endpoints da APIAbaixo estão listadas as principais rotas disponíveis na aplicação:MétodoRotaDescriçãoAutenticaçãoPOST/api/auth/registerCadastra um novo usuário no sistema.PúblicoPOST/api/auth/loginAutentica o usuário e retorna o token JWT.PúblicoGET/api/users/profileRetorna os dados do perfil do usuário logado.Requer Token JWTPUT/api/users/profileAtualiza as informações cadastrais do usuário.Requer Token JWT🔐 Como utilizar o Token JWTPara realizar requisições nas rotas protegidas por autenticação, inclua o token gerado no ato do login dentro do cabeçalho (Header) HTTP de sua requisição utilizando o padrão Bearer:HTTPAuthorization: Bearer <SEU_TOKEN_JWT_AQUI>
+Desenvolvido por guibenat.
